@@ -1,4 +1,4 @@
 **/*.o
 run
-./bin/*
-./*.7z
+bin
+minesweeper.7z
