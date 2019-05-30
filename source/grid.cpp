@@ -1,8 +1,10 @@
 #include "./grid.hpp"
+#include "time.h"
 
-Grid::Grid(int w, int h) {
+Grid::Grid(int w, int h, int num_of_mines) {
   s_w = w + 1;
   s_h = h + 1;
+  mines = num_of_mines;
 
   int i = 1;
   int j = 1;
@@ -19,12 +21,27 @@ Grid::Grid(int w, int h) {
 void Grid::init_mines() {
   int i = 1;
   int j = 1;
+  int k = 1;
+  srand(time(NULL));
 
+  // fill board
   for (i = 1; i < s_w; i++) {
     for (j = 1; j < s_h; j++) {
-      board[i][j] = 0;
+       board[i][j] = 0;
       revealed[i][j] = false;
     }
+  }
+
+  // add mines
+  for (k = 1; k <= mines;)
+  { 
+     int x = rand() % s_w;
+     int y = rand() % s_h;
+
+     if(exists(x, y) && (board[x][y] != -1)) {
+         board[x][y] = -1;
+         k++;
+     }
   }
 }
 
@@ -82,9 +99,21 @@ bool Grid::is_revealed(int x, int y){
 void Grid::reveal(int x, int y) {
   if (this->exists(x, y) && !revealed[x][y]){
     revealed[x][y] = true;
+    return;
   }
   if (this->exists(x,y) && revealed[x][y])
     printf("(%i ; %i) already revealed...\n", x, y);
   else
     printf("(%i ; %i) doesn't exist...\n", x, y);
+}
+
+void Grid::reveal_all() {
+  int i = 1;
+  int j = 1;
+
+  // fill board
+  for (i = 1; i < s_w; i++) {
+    for (j = 1; j < s_h; j++)
+      revealed[i][j] = true;
+  }
 }

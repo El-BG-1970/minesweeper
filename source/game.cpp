@@ -3,11 +3,12 @@
 // func definitions
 Game::Game(){
     s_running = true;
-    grid = new Grid(10, 10);
+    grid = new Grid(10, 10, 10 );
     grid->init_mines();
 }
 
 void Game::show_board(){
+    //grid->reveal_all();
     grid->print();
 }
 
