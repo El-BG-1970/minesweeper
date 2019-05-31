@@ -11,6 +11,7 @@ public:
   void print();
   void reveal(int, int);
   void reveal_all();
+  int adjascent_mines(int, int);
 
 private:
   int s_h; // height

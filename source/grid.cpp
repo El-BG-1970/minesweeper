@@ -34,15 +34,34 @@ void Grid::init_mines() {
 
   // add mines
   for (k = 1; k <= mines;)
-  { 
-     int x = rand() % s_w;
-     int y = rand() % s_h;
+  {
+    int x = rand() % s_w;
 
-     if(exists(x, y) && (board[x][y] != -1)) {
-         board[x][y] = -1;
-         k++;
-     }
+    int y = rand() % s_h;
+
+    if (exists(x, y) && (board[x][y] != -1)) {
+      board[x][y] = -1;
+      k++;
+    }
   }
+}
+
+int Grid::adjascent_mines(int x, int y){
+    int count;
+    int i, j;
+    i = x-1;
+    j = y-1;
+    count = 0;
+
+    for (i = x-1; i<=x+1; i++){
+      for (j = y-1; j<=y+1; j++){
+        if (!((i == x) && (j == y))){
+          if (exists(i,j) && board[i][j] == -1)
+            count++;
+            }
+        }
+    }
+    return(count);
 }
 
 void Grid::print() {
@@ -70,14 +89,23 @@ void Grid::print() {
           else
             printf("-, ");
         } else {
-          if (j == s_h - 1)
-            printf("%i \n", board[i][j]);
-          else
-            printf("%i, ", board[i][j]);
+          if (board[i][j] != -1) {
+            if (j == s_h - 1)
+              //printf("%i \n", board[i][j]);
+              printf("%i \n", adjascent_mines(i,j));
+            else
+              //printf("%i, ", board[i][j]);
+              printf("%i, ", adjascent_mines(i,j));
+          } else {
+            if (j == s_h - 1)
+              printf("%i \n", board[i][j]);
+            else
+              printf("%i, ", board[i][j]);
+            }
+          }
         }
       }
     }
-  }
 }
 
 bool Grid::exists(int x, int y) {
@@ -85,6 +113,13 @@ bool Grid::exists(int x, int y) {
     return (true);
   else
     return (false);
+}
+
+bool Grid::ismine(int x, int y){
+  if (exists(x, y) && (board[x][y] == -1))
+      return(true);
+  else
+      return(false);
 }
 
 bool Grid::is_revealed(int x, int y){

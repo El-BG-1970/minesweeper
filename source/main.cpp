@@ -24,7 +24,7 @@ int main()
     scanf("%i %i", x, y);
     //printf("%i %i \n", x[0], y[0]);
     game.reveal(x[0], y[0]);
-  }
+}
 
   return (0);
 }

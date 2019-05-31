@@ -8,7 +8,7 @@ Game::Game(){
 }
 
 void Game::show_board(){
-    //grid->reveal_all();
+    grid->reveal_all();
     grid->print();
 }
 
