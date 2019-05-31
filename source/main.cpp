@@ -16,7 +16,7 @@ int main()
   x[0] = 0;
   y[0] = 0;
 
-  while (game.isrunning()){
+  while (game.isrunning() && !game.won()){
     printf("\n\n current state: \n");
     game.show_board();
 
@@ -24,7 +24,11 @@ int main()
     scanf("%i %i", x, y);
     //printf("%i %i \n", x[0], y[0]);
     game.reveal(x[0], y[0]);
-}
+  }
 
+  if (game.won()){
+    game.show_all();
+    printf("\n\n\nYOU WON\n");
+  }
   return (0);
 }

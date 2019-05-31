@@ -8,8 +8,11 @@ Game::Game(){
 }
 
 void Game::show_board(){
-    grid->reveal_all();
-    grid->print();
+  //grid->reveal_all();
+  grid->print();
+}
+void Game::show_all(){
+  grid->reveal_all();
 }
 
 bool Game::isrunning(){
@@ -17,5 +20,13 @@ bool Game::isrunning(){
 }
 
 void Game::reveal(int x, int y) {
-  grid->reveal(x,y);
+  if(!grid->reveal(x, y)){
+    grid->print();
+    printf("\n\nGAME OVER!\n");
+    s_running = false;
+  }
+}
+
+bool Game::won(){
+  return(grid->win());
 }

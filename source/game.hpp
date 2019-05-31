@@ -7,7 +7,9 @@ class Game {
 public:
   Game();
   bool isrunning();
+  bool won();
   void show_board();
+  void show_all();
   void reveal(int, int);
 
 private:

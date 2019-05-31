@@ -5,13 +5,13 @@ class Grid {
 public:
   Grid(int, int, int);
   bool exists(int, int);
-  bool is_revealed(int, int);
   bool ismine(int, int);
   void init_mines();
   void print();
-  void reveal(int, int);
+  bool reveal(int, int);
   void reveal_all();
   int adjascent_mines(int, int);
+  bool win();
 
 private:
   int s_h; // height
@@ -19,4 +19,5 @@ private:
   int mines;
   int **board;
   bool **revealed;
+  int left;
 };
