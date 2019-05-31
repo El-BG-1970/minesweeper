@@ -98,10 +98,10 @@ void Grid::print() {
               printf("%i, ", adjascent_mines(i,j));
           } else {
             if (j == s_h - 1)
-              printf("%i \n", board[i][j]);
+              printf("X \n");
             else
-              printf("%i, ", board[i][j]);
-            }
+              printf("X, ");
+          }
           }
         }
       }
@@ -132,11 +132,11 @@ bool Grid::is_revealed(int x, int y){
 }
 
 void Grid::reveal(int x, int y) {
-  if (this->exists(x, y) && !revealed[x][y]){
+  if (exists(x, y) && !revealed[x][y]){
     revealed[x][y] = true;
     return;
   }
-  if (this->exists(x,y) && revealed[x][y])
+  if (exists(x,y) && revealed[x][y])
     printf("(%i ; %i) already revealed...\n", x, y);
   else
     printf("(%i ; %i) doesn't exist...\n", x, y);
