@@ -5,7 +5,7 @@
 // class definition
 class Game {
 public:
-  Game();
+  Game(int, int, int);
   bool isrunning();
   bool won();
   void show_board();

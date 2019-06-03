@@ -8,8 +8,7 @@ Grid::Grid(int w, int h, int num_of_mines) {
   left = h*w;
 
   int i = 1;
-  int j = 1;
-
+  
   board = (int **)malloc(s_w * sizeof(int *));
   revealed = (bool **)malloc(s_w * sizeof(bool *));
 

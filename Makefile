@@ -1,6 +1,6 @@
 IDIR =./source
 CC=g++
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -Wall -Wextra #-Werror
 
 ODIR=./build
 LDIR =./lib
@@ -9,10 +9,10 @@ BINDIR=./bin
 
 LIBS=-lm
 
-_DEPS = grid.cpp game.cpp
+_DEPS = grid.cpp game.cpp 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o grid.o game.o
+_OBJ = main.o grid.o game.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
@@ -26,3 +26,5 @@ $(BINDIR)/minesweeper: $(OBJ)
 
 clean:
 	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~     
+
+

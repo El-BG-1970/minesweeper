@@ -1,12 +1,18 @@
 #include "stdio.h"
 #include "cstdlib"
 #include "./game.hpp"
+#include "./get_input.hpp"
 
 using namespace std;
 
-int main()
+int main(int argc, char **argv)
 {
-  Game game;
+  int *parameters;
+  parameters = (int *)malloc(3*sizeof(int));
+
+  parameters = get_input(argc, argv);
+
+  Game game(parameters[0], parameters[1], parameters[2]);
   int *x;
   int *y;
 
@@ -27,8 +33,9 @@ int main()
   }
 
   if (game.won()){
+    printf("\n\n");
     game.show_all();
-    printf("\n\n\nYOU WON\n");
+    printf("\n\nYOU WON\n");
   }
   return (0);
 }
