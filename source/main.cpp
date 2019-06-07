@@ -12,6 +12,11 @@ int main(int argc, char **argv)
 
   parameters = get_input(argc, argv);
 
+  if (parameters[2] > (parameters[0] * parameters[1])/2 ){
+      printf("Too many mines!! \n");
+      return(-1);
+  }
+
   Game game(parameters[0], parameters[1], parameters[2]);
   int *x;
   int *y;
