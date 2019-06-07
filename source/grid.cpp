@@ -7,9 +7,6 @@ Grid::Grid(int w, int h, int num_of_mines) {
   mines = num_of_mines;
   left = h*w;
 
-  if (s_w > 10)
-      large = true;
-  
   board = (int **)malloc(s_w * sizeof(int *));
   revealed = (bool **)malloc(s_w * sizeof(bool *));
 
@@ -76,7 +73,10 @@ void Grid::print() {
         if (j == 0)
           printf("%i \t", j);
         else {
-          printf("%i  ", j);
+          if (j >= 9)
+            printf("%i ", j);
+          else
+            printf("%i  ", j);
           if (j == s_h - 1)
             printf("\n\n\n");
         }

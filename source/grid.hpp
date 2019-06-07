@@ -20,5 +20,4 @@ private:
   int **board;
   bool **revealed;
   int left;
-  bool large;
 };
