@@ -2,6 +2,7 @@
 #include "cstdlib"
 #include "./game.hpp"
 #include "./get_input.hpp"
+#include "./help.hpp"
 
 using namespace std;
 
@@ -9,6 +10,11 @@ int main(int argc, char **argv)
 {
   int *parameters;
   parameters = (int *)malloc(3*sizeof(int));
+
+  if (argv[1] && (!strcmp(argv[1], "--help"))){
+    help_msg();  
+    return(0);
+  }
 
   parameters = get_input(argc, argv);
 
@@ -28,12 +34,12 @@ int main(int argc, char **argv)
   y[0] = 0;
 
   while (game.isrunning() && !game.won()){
+   
     printf("\n\n current state: \n");
     game.show_board();
 
     printf("your move: \n");
     scanf("%i %i", x, y);
-    //printf("%i %i \n", x[0], y[0]);
     game.reveal(x[0], y[0]);
   }
 
