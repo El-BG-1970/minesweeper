@@ -11,6 +11,7 @@ void Game::show_board(){
   //grid->reveal_all();
   grid->print();
 }
+
 void Game::show_all(){
   grid->reveal_all();
   grid->print();

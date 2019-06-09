@@ -44,7 +44,15 @@ int *get_coords(std::string str)
 
     for (i = 0; i < temp.size(); i++)
     {
-        out[i] = std::stoi(temp[i]);
+        try{
+            out[i] = std::stoi(temp[i]);
+        }
+        catch(std::invalid_argument) {
+            printf("bad argument");    
+            int *zero = (int *)malloc(3 * sizeof(int));
+            zero = NULL;
+            return(zero);
+        }
     }
     return(out);
 }
