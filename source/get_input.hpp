@@ -1,5 +1,7 @@
-#include <cstring>
 #include <cstdlib>
+#include <vector>
+#include <cstring>
+#include <sstream>
 
 int *get_input(int argc, char **argv)
 {
@@ -26,5 +28,23 @@ int *get_input(int argc, char **argv)
         }
     } 
 
+    return(out);
+}
+
+int *get_coords(std::string str)
+{
+    std::vector<std::string> temp;
+    std::istringstream iss(str);
+    
+    for(std::string str; iss >> str; )
+        temp.push_back(str);
+
+    int *out = (int *)malloc(temp.size() * sizeof(int)); 
+    unsigned i = 0;
+
+    for (i = 0; i < temp.size(); i++)
+    {
+        out[i] = std::stoi(temp[i]);
+    }
     return(out);
 }

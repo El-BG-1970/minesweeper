@@ -26,9 +26,14 @@ int main(int argc, char **argv)
   Game game(parameters[0], parameters[1], parameters[2]);
   int *x;
   int *y;
+  int *z;
+  char *buffer;
 
   x = (int *)malloc(sizeof(int));
   y = (int *)malloc(sizeof(int));
+  z = (int *)malloc(3 * sizeof(int));
+
+  buffer = (char*)malloc(25 * sizeof(char));
 
   x[0] = 0;
   y[0] = 0;
@@ -39,8 +44,12 @@ int main(int argc, char **argv)
     game.show_board();
 
     printf("your move: \n");
-    scanf("%i %i", x, y);
-    game.reveal(x[0], y[0]);
+    //scanf("%i %i", x, y);
+    fgets(buffer, 25, stdin);
+    z = get_coords(buffer);
+
+    game.reveal(z[0], z[1]);
+    //game.reveal(x[0], y[0]);
   }
 
   if (game.won()){
