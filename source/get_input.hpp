@@ -27,6 +27,11 @@ int *get_input(int argc, char **argv)
                 out[2] = atoi(argv[i+1]);    
         }
     } 
+	i = 0;
+	for (i = 0; i < 3; i++){
+		if (out[i] < 10)
+			out[i] = 10;
+	}
 
     return(out);
 }

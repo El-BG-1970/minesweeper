@@ -23,7 +23,3 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-* A great thanks to Mme Z, to whom I owe this project... Thanks again for challenging me!
